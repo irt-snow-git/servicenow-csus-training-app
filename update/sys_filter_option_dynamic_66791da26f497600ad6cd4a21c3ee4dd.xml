@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_filter_option_dynamic">
+    <sys_filter_option_dynamic action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <available_for_default>false</available_for_default>
+        <available_for_filter>false</available_for_filter>
+        <available_for_ref_qual>true</available_for_ref_qual>
+        <field_type display_value="Reference">52a227c1bf3320001875647fcf07396a</field_type>
+        <filter_by_schedule/>
+        <label/>
+        <order/>
+        <roles/>
+        <script/>
+        <script_reference_id/>
+        <script_reference_table/>
+        <sys_class_name>sys_filter_option_dynamic</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-02-23 00:04:43</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>66791da26f497600ad6cd4a21c3ee4dd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+        <sys_update_name>sys_filter_option_dynamic_66791da26f497600ad6cd4a21c3ee4dd</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-02-23 00:04:43</sys_updated_on>
+        <table>x_casus_training_organizer</table>
+        <table_containing_filter/>
+    </sys_filter_option_dynamic>
+</record_update>

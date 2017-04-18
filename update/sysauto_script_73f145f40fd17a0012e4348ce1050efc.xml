@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>deactivateRelatedTrainingModules</name>
+        <run_as display_value="Nicholas Myers">c44d0241fccff400afd74c548b802fc3</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2017-03-01 22:04:58</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[	// deactivate related training modules
+	
+	gs.addInfoMessage("Inside scheduled script");
+
+
+	// determine training content type and determine what should be disabled below that item
+	var table = current.getTableName();
+	
+	gs.addInfoMessage("Table: " + table);
+	
+	if(table == 'x_casus_training_organizer') { // if the type is an org, get specific classification
+		
+	var classification = current.classification;
+	
+	if(classification == 'area') {
+		this.deactivateLessons(); //deactivate training lessons and their children
+		this.deactiveThis(); //deactivate this record
+		
+	} else if(classification == 'lesson') {
+		
+		gs.addInfoMessage("Classification is " + current.classification);
+		gs.addInfoMessage("active: " + current.active);
+		
+		//this.deactivateChapters(); //deactivate chapters and their children
+		this.deactiveThis(); //deactivate this record
+		
+	} else if(classification == 'chapter') {
+		
+		this.deactivatePages(); //deactivate training pages & their children
+		this.deactiveThis(); //deactivate this record
+		
+	}
+	//this module will be called via a business rule, not via a UI Action
+	} else if(table == 'x_casus_training_training_page') { // if a training page is being deactivated, deactivate the content below
+
+		this.deactivateContent(); //deactivate training content
+		this.deactiveThis(); //deactivate this record
+	}
+
+
+//mark the current record as inactive
+function deactivateThis() {
+	current.active = false;
+	current.update();
+	
+	gs.addInfoMessage(current.number + " deactivated");
+}
+
+//mark lessons inactive using passed in item as its parent
+function deactivateLessons(parentItem) {
+	var lsn = new GlideRecord('x_casus_training_organizer');
+	lsn.addQuery('parent', parentItem);
+	lsn.addQuery('classification', 'lesson');
+	lsn.addActiveQuery();
+	lsn.query();
+	
+	while(lsn._next()) { //deactivate child objects
+		deactivateChapters(lsn.sys_id);
+	
+		lsn.active = false;
+		lsn.update();
+	}
+}
+
+//mark chapters inactive using the passed in item as its parent
+function deactivateChapters(parentItem) {
+	var chp = new GlideRecord('x_casus_training_organizer');
+	chp.addQuery('parent', parentItem);
+	chp.addQuery('classification', 'chapter');
+	chp.addActiveQuery();
+	chp.query();
+	
+	while(lsn._next()) { //deactivate child objects
+		deactivatePages(chp.sys_id);
+	
+		//now deactivate this chapter
+		chp.active = false;
+		chp.update();
+	}
+}
+
+//mark training pages inactive using passed in item as its parent
+function deactivatePages(parentItem) {
+	var tpg = new GlideRecord('x_casus_training_training_page');
+	tpg.addQuery('parent', parentItem);
+	tpg.addActiveQuery();
+	tpg.query();
+	
+	while(tpg._next()) { //deactivate child objects
+		deactivateContent(tpg.sys_id);
+	
+		//now deactivate this page
+		tpg.active = false;
+		tpg.update();
+	}
+}
+
+//mark training content inactive using passed in item as its parent
+function deactivateContent(parentItem) {
+	var tcnt = new GlideRecord('x_casus_training_training_content');
+	tcnt.addQuery('parent', parentItem);
+	tcnt.addActiveQuery();
+	tcnt.query();
+	
+	//deactivate content -- bottom level
+	while (tcnt._next()) {
+		tcnt.active = false;
+		tcnt.update();
+	}
+}
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-01 22:06:34</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>73f145f40fd17a0012e4348ce1050efc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>deactivateRelatedTrainingModules</sys_name>
+        <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+        <sys_update_name>sysauto_script_73f145f40fd17a0012e4348ce1050efc</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-04-18 17:45:10</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

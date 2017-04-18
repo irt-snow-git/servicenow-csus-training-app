@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="x_casus_training_training_page" relationship="080b5f4e6f417600ad6cd4a21c3ee45c" sys_domain="global" table="x_casus_training_training_content" version="2" view="">
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_casus_training_training_content</name>
+            <parent>x_casus_training_training_page</parent>
+            <position/>
+            <relationship display_value="Training Content">080b5f4e6f417600ad6cd4a21c3ee45c</relationship>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-02 21:18:36</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>eef0ce450f997a0012e4348ce1050e77</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_casus_training_training_content</sys_name>
+            <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+            <sys_update_name>sys_ui_list_x_casus_training_training_page_080b5f4e6f417600ad6cd4a21c3ee45c_null</sys_update_name>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-02 21:18:36</sys_updated_on>
+            <sys_user display_value="Nicholas Myers">c44d0241fccff400afd74c548b802fc3</sys_user>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

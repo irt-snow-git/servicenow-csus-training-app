@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>false</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_casus_training_training_page</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Remove Training Page References on Delet</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//script removes next and previous records for existing training pages when an active flag changes, order is removed, or parent changes to null.
+	
+	//link the old previous and next pages together, since this object is no longer there
+	function updateOldReferences() {
+		//update references
+		
+		//the current object's 'previous' page
+		var prevPg = new GlideRecord('x_casus_training_training_page');
+		prevPg.get(current.previous);
+		
+		//the current object's 'next' page
+		var nextPg = new GlideRecord('x_casus_training_training_page');
+		nextPg.get(current.next);
+		
+		//check for nulls to ensure fields are being updated correctly
+		//if a null exists, the page is being moved from the front or end of the list
+		if(current.next == '' || current.previous == '') {
+			
+			//if its next field is null, then it's being moved from the front 
+			if(current.next == ''){
+				//ensure the previous field exists, so its next field can be set to null, as it's now the last item in the list
+				//otherwise it doesn't need an update because it doesn't exist
+				if(current.previous != '') {
+					prevPg.next = '';
+					prevPg.update();
+				}
+			} 
+			
+			//if its previous field is null, then it's being moved from the end
+			if(current.previous == '') {
+				//ensure the next field exists, so its previous field can be set to null, as it's now the last item in the list
+				if(current.next != '') {
+					nextPg.previous = '';
+					nextPg.update();
+				}
+			}
+			
+		} else {
+			//both rererences exist, so update both the previous and next field
+			prevPg.next = nextPg.sys_id;
+			nextPg.previous = prevPg.sys_id;
+			nextPg.update();
+			prevPg.update();
+			
+		}
+	}
+	
+	
+	//record is updated, pass 
+	updateOldReferences();
+	
+	//update this record
+	current.next = '';
+	current.previous = '';
+	current.update();
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-04-18 22:04:14</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>a9fd4c946f52b240ad6cd4a21c3ee478</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Remove Training Page References on Delet</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+        <sys_update_name>sys_script_a9fd4c946f52b240ad6cd4a21c3ee478</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-04-18 22:04:14</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>

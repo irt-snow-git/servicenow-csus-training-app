@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_training.returnSameTypeOrganizer</api_name>
+        <client_callable>true</client_callable>
+        <description>Called by Training Organizers, returns items of the same type -- to be used as a reference qualifier for the previous and next items.</description>
+        <name>returnSameTypeOrganizer</name>
+        <script><![CDATA[// a script to be called by training organizers, will be used as a reference qualifier to filter a 'next' or 'previous' list to return objects of the same type
+function returnSameTypeOrganizer() {
+	var answer = 'active=true'; //used to return the formatted query
+
+	if(current.classification == 'area') {
+		return answer += "^classification=area";
+	}
+	if (current.classification == 'lesson') {
+		return answer += "^classification=lesson";
+	}
+	else if (current.classification == 'chapter') {
+		return answer += "^classification=chapter";
+	}
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-02-24 22:02:18</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>15409bcf6f45b600ad6cd4a21c3ee46f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>returnSameTypeOrganizer</sys_name>
+        <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+        <sys_update_name>sys_script_include_15409bcf6f45b600ad6cd4a21c3ee46f</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-02-24 22:02:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

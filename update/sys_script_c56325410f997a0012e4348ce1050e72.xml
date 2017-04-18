@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_casus_training_organizer</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_casus_training_organizer">activeCHANGESTOtrue^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="CHANGESTO" or="false" value="true"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Reactivate Child Training on Restore</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// determine training content type and determine what should be enabled below that item
+
+	//get organizer classification
+	var classification = current.classification;
+		
+	if(classification == 'area') {
+		deactivateLessons(current); //deactivate training lessons and their children
+	} else if(classification == 'lesson') {
+		deactivateChapters(current); //deactivate chapters and their children
+	} else if(classification == 'chapter') {
+		deactivatePages(current); //deactivate training pages & their children
+	}
+
+	//mark lessons inactive using passed in item as its parent
+	function deactivateLessons(parentItem) {
+		var lsn = new GlideRecord('x_casus_training_organizer');
+		lsn.addQuery('parent', parentItem.sys_id);
+		lsn.addQuery('classification', 'lesson');
+		lsn.addQuery('active', false);
+		lsn.query();
+
+		while(lsn.next()) { //deactivate child objects
+			deactivateChapters(lsn);
+
+			lsn.active = true;
+			lsn.update();
+			
+			gs.addInfoMessage("Training Lesson " + lsn.number + " activated");
+		}
+	}
+
+	//mark chapters inactive using the passed in item as its parent
+	function deactivateChapters(parentItem) {
+		gs.addInfoMessage("In chapter function");
+		var chp = new GlideRecord('x_casus_training_organizer');
+		chp.addQuery('parent', parentItem.sys_id);
+		chp.addQuery('classification', 'chapter');
+		chp.addQuery('active', false);
+		chp.query();
+
+		while(chp.next()) { //deactivate child objects
+			deactivatePages(chp);
+
+			//now deactivate this chapter
+			chp.active = true;
+			chp.update();
+			
+			gs.addInfoMessage("Training Chapter " + chp.number + " activated");
+		}
+	}
+
+	//mark training pages inactive using passed in item as its parent
+	function deactivatePages(parentItem) {
+		gs.addInfoMessage("In page function");
+		var tpg = new GlideRecord('x_casus_training_training_page');
+		tpg.addQuery('parent', parentItem.sys_id);
+		tpg.addQuery('active', false);
+		tpg.query();
+
+		while(tpg.next()) { //deactivate child objects
+			deactivateContent(tpg);
+
+			//now deactivate this page
+			tpg.active = true;
+			tpg.update();
+			
+			gs.addInfoMessage("Training Page " + tpg.number + " activated");
+		}
+	}
+
+	//mark training content inactive using passed in item as its parent
+	function deactivateContent(parentItem) {
+		gs.addInfoMessage("In content function");
+		var tcnt = new GlideRecord('x_casus_training_training_content');
+		tcnt.addQuery('parent', parentItem.sys_id);
+		tcnt.addQuery('active', false);
+		tcnt.query();
+
+		//deactivate content -- bottom level
+		while (tcnt.next()) {
+			tcnt.active = true;
+			tcnt.update();
+			
+			gs.addInfoMessage("Content " + tcnt.number + " activated");
+		}
+	}
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-02 19:15:59</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>c56325410f997a0012e4348ce1050e72</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Reactivate Child Training on Restore</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Training" source="x_casus_training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Training">b65fc30a6f417600ad6cd4a21c3ee4ba</sys_scope>
+        <sys_update_name>sys_script_c56325410f997a0012e4348ce1050e72</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-16 20:14:47</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>
