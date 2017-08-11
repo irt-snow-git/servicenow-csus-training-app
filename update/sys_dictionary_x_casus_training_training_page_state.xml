@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-04-18 16:56:16</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>7e87c7440f56b24012e4348ce1050eb8</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>State</sys_name>

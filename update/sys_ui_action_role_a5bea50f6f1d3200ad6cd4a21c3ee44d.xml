@@ -4,7 +4,7 @@
         <sys_class_name>sys_ui_action_role</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-09 01:06:58</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a5bea50f6f1d3200ad6cd4a21c3ee44d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Retire.x_casus_training.page_editor</sys_name>

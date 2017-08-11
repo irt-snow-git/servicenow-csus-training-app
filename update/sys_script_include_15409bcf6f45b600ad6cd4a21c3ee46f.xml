@@ -24,7 +24,7 @@ function returnSameTypeOrganizer() {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-24 22:02:18</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>15409bcf6f45b600ad6cd4a21c3ee46f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>returnSameTypeOrganizer</sys_name>

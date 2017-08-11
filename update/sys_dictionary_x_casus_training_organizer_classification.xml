@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-21 20:20:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>01ec1b8e6f417600ad6cd4a21c3ee4a5</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>Classification</sys_name>

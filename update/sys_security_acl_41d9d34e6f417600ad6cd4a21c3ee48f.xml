@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-21 20:05:02</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>41d9d34e6f417600ad6cd4a21c3ee48f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_training_training_content</sys_name>

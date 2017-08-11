@@ -251,7 +251,7 @@
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-04-07 23:34:00</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>ccfa236c0f0a7e0012e4348ce1050ed5</sys_id>
         <sys_mod_count>91</sys_mod_count>

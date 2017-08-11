@@ -53,7 +53,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-21 20:22:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d9ec1b8e6f417600ad6cd4a21c3ee414</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>Parent</sys_name>

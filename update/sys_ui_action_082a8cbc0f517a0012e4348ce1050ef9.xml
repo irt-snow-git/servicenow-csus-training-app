@@ -35,7 +35,7 @@ gs.setRedirect("/service/training/");
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-01 18:06:58</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>082a8cbc0f517a0012e4348ce1050ef9</sys_id>
         <sys_mod_count>1</sys_mod_count>

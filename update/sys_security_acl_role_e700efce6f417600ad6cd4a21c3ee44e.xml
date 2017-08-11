@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-21 20:32:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>e700efce6f417600ad6cd4a21c3ee44e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_training_training_content.x_casus_training.admin</sys_name>

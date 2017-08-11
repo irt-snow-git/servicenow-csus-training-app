@@ -56,7 +56,7 @@
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-02-27 18:19:32</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>d01079006f19f600ad6cd4a21c3ee477</sys_id>
         <sys_mod_count>10</sys_mod_count>

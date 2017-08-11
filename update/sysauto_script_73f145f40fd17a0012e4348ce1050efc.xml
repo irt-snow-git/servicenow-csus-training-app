@@ -127,7 +127,7 @@ function deactivateContent(parentItem) {
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-01 22:06:34</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>73f145f40fd17a0012e4348ce1050efc</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>deactivateRelatedTrainingModules</sys_name>
